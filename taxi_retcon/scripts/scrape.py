@@ -4,6 +4,14 @@ import json
 import os
 import time
 
+retrieved = []
+for(dirpath,dirnames,filenames) in os.walk('taxi-availability'):
+    retrieved.extend(filenames)
+    break
+retrieved.sort()
+last_pos = retrieved[0].strip('.geojson').replace('_',':')
+print(last_pos)
+
 url = 'https://api.data.gov.sg/v1/transport/taxi-availability'
 headers = {
            'api-key': 'Q816e22cmkF4xYpjQz2PJgsDJ4nfUkW5'
@@ -17,12 +25,12 @@ fivemin = datetime.timedelta(minutes=5)
 start_date = datetime.datetime.strptime(start_date_str, dateformat)
 end_date = datetime.datetime.strptime(end_date_str, dateformat)
 
-loopdate = datetime.datetime.strptime(start_date_str, dateformat)
+loopdate = datetime.datetime.strptime(last_pos, dateformat)
 loopdate_str = loopdate.strftime(dateformat)
 loopdate_filename = loopdate_str.replace(':','_') + '.geojson'
 
-print(start_date.strftime(dateformat))
-print((start_date-fivemin).strftime(dateformat))
+#print(start_date.strftime(dateformat))
+#print((start_date-fivemin).strftime(dateformat))
 
 while end_date < loopdate <= start_date:
     fullurl = url + '?date_time=' + loopdate_str
@@ -37,3 +45,5 @@ while end_date < loopdate <= start_date:
     loopdate_filename = loopdate_str.replace(':','_') + '.geojson'
     print('Next date to retrieve: ' + loopdate_str + ', waiting 60s...')
     time.sleep(60)
+
+print("Finished mining.")
