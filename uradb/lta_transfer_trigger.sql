@@ -4,8 +4,8 @@ ON ECAS_LTA_PTE_CP_RATES
 FOR EACH ROW
 
 BEGIN
-	INSERT INTO ECAS_LTA_PTE_CP_RATES_ARCHIVE (carpark_rate_id, carpark_id, carpark_name, category, weekday_rate1, weekday_rate2, saturday_rate, sunday_PH_rate, summary, latitude, longitude, flag, source_cre_dt)
-	VALUES (:NEW.carpark_rate_id, :NEW.carpark_id, :NEW.carpark_id, :NEW.carpark_name, :NEW.category, :NEW.weekday_rate1,:NEW.weekday_rate2,:NEW.saturday_rate,:NEW.sunday_PH_rate,:NEW.summary,:NEW.latitude,:NEW.longitude,:NEW.flag,:NEW.source_cre_dt);
+	INSERT INTO ECAS_LTA_PTE_CP_RATES_ARCHIVE (CARPARK_RATE_ID, CARPARK_ID, CARPARK_NAME, CATEGORY, WEEKDAY_RATE1, WEEKDAY_RATE2, SATURDAY_RATE, SUNDAY_PH_RATE, SUMMARY, LATITUDE, LONGITUDE, FLAG, SOURCE_CRE_DT)
+	VALUES (:NEW.CARPARK_RATE_ID, :NEW.CARPARK_ID, :NEW.CARPARK_ID, :NEW.CARPARK_NAME, :NEW.CATEGORY, :NEW.WEEKDAY_RATE1,:NEW.WEEKDAY_RATE2,:NEW.SATURDAY_RATE,:NEW.SUNDAY_PH_RATE,:NEW.SUMMARY,:NEW.LATITUDE,:NEW.LONGITUDE,:NEW.FLAG,:NEW.SOURCE_CRE_DT);
 END;
 
 /
@@ -16,6 +16,6 @@ ON ECAS_LTA_PTE_CP_VACANT_LOT
 FOR EACH ROW
 
 BEGIN
-	INSERT INTO ECAS_HDB_CP_LOT_ARCHIVE (carpark_id, area, development, lots, Summary, latitude, longitude, distance, flag,source_cre_dt)
-	VALUES (:NEW.carpark_id, :NEW.area, :NEW.development, :NEW.lots, :NEW.Summary, :NEW.latitude, :NEW.longitude, :NEW.distance, :NEW.flag, :NEW.souce_cre_dt);	
+	INSERT INTO ECAS_HDB_CP_LOT_ARCHIVE (CARPARK_ID, AREA, DEVELOPMENT, LOTS, SUMMARY, LATITUDE, LONGITUDE, DISTANCE, FLAG,SOURCE_CRE_DT)
+	VALUES (:NEW.CARPARK_ID, :NEW.AREA, :NEW.DEVELOPMENT, :NEW.LOTS, :NEW.SUMMARY, :NEW.LATITUDE, :NEW.LONGITUDE, :NEW.DISTANCE, :NEW.FLAG, :NEW.SOUCE_CRE_DT);	
 END;
