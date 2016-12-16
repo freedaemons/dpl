@@ -19,7 +19,7 @@ headers = {
            'api-key': 'Q816e22cmkF4xYpjQz2PJgsDJ4nfUkW5'
            }
            
-start_date_str = '2016-11-05T12:00:00'
+start_date_str = '2016-11-26T12:00:00'
 end_date_str = '2016-10-15T12:00:00'
 dateformat = '%Y-%m-%dT%H:%M:%S'
 fivemin = datetime.timedelta(minutes=5)
