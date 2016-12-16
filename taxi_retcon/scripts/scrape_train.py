@@ -5,11 +5,13 @@ import os
 import time
 
 retrieved = []
+last_pos = 'Nothing'
 for(dirpath,dirnames,filenames) in os.walk('taxi-train'):
     retrieved.extend(filenames)
     break
 retrieved.sort()
-last_pos = retrieved[0].strip('.geojson').replace('_',':')
+if len(retrieved) != 0:
+    last_pos = retrieved[0].strip('.geojson').replace('_',':')
 print(last_pos)
 
 url = 'https://api.data.gov.sg/v1/transport/taxi-availability'
@@ -25,7 +27,9 @@ fivemin = datetime.timedelta(minutes=5)
 start_date = datetime.datetime.strptime(start_date_str, dateformat)
 end_date = datetime.datetime.strptime(end_date_str, dateformat)
 
-loopdate = datetime.datetime.strptime(last_pos, dateformat)
+loopdate = start_date
+if len(retrieved) != 0:
+    loopdate = datetime.datetime.strptime(last_pos, dateformat)
 loopdate_str = loopdate.strftime(dateformat)
 loopdate_filename = loopdate_str.replace(':','_') + '.geojson'
 
