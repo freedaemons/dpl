@@ -15,7 +15,8 @@ CREATE TABLE "ECAS_HDB_CP_LOT_ARCHIVE" (
 /
 ALTER TABLE "ECAS_HDB_CP_LOT_ARCHIVE"
   ADD CONSTRAINT hdb_cp_lot_pk PRIMARY KEY (
-    carpark_no
+    carpark_no,
+    cre_dt
   )
   USING INDEX
     TABLESPACE APPL_DATA
